@@ -1,0 +1,3886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DJ Kroch Entertainment | DJ for weddings and events in Bahir Dar and Addis Ababa</title>
+  <meta name="description" content="Professional DJ and event entertainment in Bahir Dar and Addis Ababa, Ethiopia. Weddings, concerts, fashion shows, corporate events and parties.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Antonio:wght@400;600;700&family=Fragment+Mono:ital@0;1&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & TOKENS (djlr.framer.website reference look & feel)
+       ========================================================================== */
+    :root {
+      --bg: #0d0d0d;
+      --bg-card: #161514;
+      --bg-card-light: #eeede8;
+      --bg-card-tan: #c8a97e;
+      --bg-card-lavender: #bbaae9; /* The reference lavender card */
+      --bg-card-beige: #e3e0d6;
+      --text: #eeede8;
+      --text-muted: rgba(238, 237, 232, 0.65);
+      --text-dim: rgba(238, 237, 232, 0.4);
+      --text-dark: #0d0d0d;
+      --orange: #ff4f1f;
+      --orange-hover: #e03f12;
+      --border: rgba(238, 237, 232, 0.12);
+      --border-light: rgba(13, 13, 13, 0.12);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --font-display: 'Antonio', 'Anton', sans-serif;
+      --font-body: 'Hanken Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Fragment Mono', monospace;
+      --font-serif: 'Instrument Serif', serif;
+      --font-ethio: 'Noto Sans Ethiopic', sans-serif;
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    img, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+
+    .et {
+      font-family: var(--font-ethio);
+      letter-spacing: 0;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       SECTION 1: TOP BAR & HEADER
+       ========================================================================== */
+    header.site-header {
+      width: 100%;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      height: 56px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .jog-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 18px;
+      height: 100%;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+      background: var(--bg);
+      z-index: 2;
+    }
+
+    .jog-wheel {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px dashed rgba(238, 237, 232, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: spin 8s linear infinite;
+    }
+
+    .jog-inner {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .jog-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .jog-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .jog-status {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .jog-status::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .marquee-track-top {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .marquee-content-top {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      animation: marquee 26s linear infinite;
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .marquee-content-top span.dot {
+      color: var(--orange);
+      font-size: 16px;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .star-box {
+      width: 56px;
+      height: 56px;
+      border-left: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: var(--bg);
+      z-index: 2;
+    }
+
+    .star-icon {
+      width: 22px;
+      height: 22px;
+      color: var(--orange);
+      animation: spin 16s linear infinite reverse;
+    }
+
+    /* Picture Navigation Tiles (Desktop) */
+    .nav-tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 92px;
+      background: var(--bg);
+    }
+
+    .nav-tile {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 16px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .nav-tile:last-child {
+      border-right: none;
+    }
+
+    .nav-tile:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .nav-tile.cta-tile {
+      background: rgba(255, 79, 31, 0.06);
+    }
+
+    .nav-tile.cta-tile:hover {
+      background: var(--orange);
+      color: #0d0d0d;
+    }
+
+    .nav-tile.cta-tile:hover .nav-tile-index,
+    .nav-tile.cta-tile:hover .nav-tile-sub {
+      color: #0d0d0d;
+    }
+
+    .nav-tile-thumb {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: grayscale(1);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-tile:hover .nav-tile-thumb {
+      filter: grayscale(0);
+      transform: scale(1.05);
+    }
+
+    .nav-tile-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-tile-index {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      margin-bottom: 2px;
+    }
+
+    .nav-tile-label {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .nav-tile-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       SECTION 2: HERO GRID (ADVANCED PHOTO / VIDEO DUAL MODE)
+       ========================================================================== */
+    .hero-section {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 376px 376px;
+      height: 752px;
+      width: 100%;
+    }
+
+    /* 1. Orange Card */
+    .hero-card-orange {
+      background: var(--orange);
+      color: #0d0d0d;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .hero-card-orange:hover {
+      background: #ff5f33;
+    }
+
+    .hero-card-orange .card-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .dot-wave-canvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px;
+      height: 140px;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .hero-card-orange .card-main-title {
+      font-family: var(--font-display);
+      font-size: 58px;
+      line-height: 0.9;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-card-orange .card-ethio {
+      font-family: var(--font-ethio);
+      font-size: 20px;
+      font-weight: 600;
+      opacity: 0.85;
+      margin-top: 6px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-card-orange .card-foot {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(13, 13, 13, 0.2);
+      padding-top: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 2. Center 2x2 Massive Portrait / Video Mode Card */
+    .hero-card-portrait {
+      grid-column: span 2;
+      grid-row: span 2;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px;
+      border-right: 1px solid var(--border);
+      background: #111;
+    }
+
+    .hero-card-portrait img.portrait-bg,
+    .hero-card-portrait video.portrait-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-card-portrait video.portrait-video {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hero-card-portrait.video-active video.portrait-video {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hero-card-portrait.video-active img.portrait-bg {
+      opacity: 0;
+    }
+
+    .hero-card-portrait:hover img.portrait-bg,
+    .hero-card-portrait:hover video.portrait-video {
+      transform: scale(1.02);
+    }
+
+    .hero-portrait-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(13, 13, 13, 0.65) 0%,
+        rgba(13, 13, 13, 0.1) 40%,
+        rgba(13, 13, 13, 0.3) 60%,
+        rgba(13, 13, 13, 0.92) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-portrait-top {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-portrait-top .badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(13, 13, 13, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    /* Video Toggle Pill Button in Hero */
+    .btn-hero-mode-toggle {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(13, 13, 13, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 12px;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-hero-mode-toggle:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .btn-hero-mode-toggle .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: inline-block;
+      animation: pulse 1.2s infinite;
+    }
+
+    .hero-portrait-bottom {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-portrait-bottom .sub-tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    h1.hero-big-name {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 7.5vw, 110px);
+      line-height: 0.85;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    /* 3. Cream Tracklist-Styled Card */
+    .hero-card-cream {
+      background: var(--bg-card-light);
+      color: var(--text-dark);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition-smooth);
+    }
+
+    .hero-card-cream:hover {
+      background: #f4f3ef;
+    }
+
+    .hero-card-cream .card-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .hero-events-mini {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .hero-events-mini li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13px;
+      border-bottom: 1px dashed rgba(13, 13, 13, 0.15);
+      padding-bottom: 6px;
+    }
+
+    .hero-events-mini li b {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .hero-events-mini li .et {
+      font-size: 12px;
+      color: rgba(13, 13, 13, 0.65);
+    }
+
+    .hero-card-cream .card-foot {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      padding-top: 10px;
+      border-top: 1px solid rgba(13, 13, 13, 0.2);
+    }
+
+    /* 4. Bottom-Left Dark Mixer Card with 4-Channel VU Meters */
+    .hero-card-mixer {
+      background: var(--bg);
+      border-right: 1px solid var(--border);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .hero-card-mixer:hover {
+      background: #121212;
+    }
+
+    .mixer-channels {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      height: 130px;
+      align-items: end;
+      padding: 16px 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .channel-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .channel-meter {
+      width: 100%;
+      max-width: 22px;
+      height: 85px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column-reverse;
+      overflow: hidden;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .channel-meter .bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 1px;
+      background: rgba(238, 237, 232, 0.2);
+      transition: background 0.15s ease;
+    }
+
+    .channel-meter .bar.active {
+      background: var(--text);
+    }
+
+    .channel-meter .bar.peak {
+      background: var(--orange);
+    }
+
+    .channel-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-dim);
+    }
+
+    .hero-card-mixer .card-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .hero-card-mixer .card-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    /* 5. Bottom-Right Dark Venue Card */
+    .hero-card-venue {
+      background: #141414;
+      position: relative;
+      overflow: hidden;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+    }
+
+    .hero-card-venue img.venue-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+      filter: grayscale(0.5);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    .hero-card-venue:hover img.venue-bg {
+      transform: scale(1.05);
+      opacity: 0.65;
+    }
+
+    .venue-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13, 13, 13, 0.6) 0%, rgba(13, 13, 13, 0.9) 100%);
+    }
+
+    .hero-card-venue > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-card-venue .card-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--orange);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .hero-card-venue .venue-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    /* ==========================================================================
+       SECTION 3: ABOUT SECTION (VERTICAL INTERACTIVE SLICES)
+       ========================================================================== */
+    .section-about {
+      width: 100%;
+      background: var(--bg-card-light);
+      color: var(--text-dark);
+      padding: 96px 32px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-head {
+      margin-bottom: 48px;
+    }
+
+    .section-indicator {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .about-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.5vw, 76px);
+      line-height: 0.95;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .about-head p.sub {
+      font-size: clamp(16px, 1.8vw, 22px);
+      color: rgba(13, 13, 13, 0.7);
+      margin-top: 12px;
+      max-width: 760px;
+    }
+
+    .about-slices {
+      display: flex;
+      height: 520px;
+      width: 100%;
+      gap: 12px;
+      margin: 40px 0 56px;
+    }
+
+    .about-slice {
+      flex: 1;
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      transition: flex 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      background: #111;
+    }
+
+    .about-slice:hover {
+      flex: 2.4;
+    }
+
+    .about-slice.default-wide {
+      flex: 1.8;
+    }
+
+    .about-slice:hover ~ .about-slice.default-wide {
+      flex: 1;
+    }
+
+    .about-slice img.slice-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.4);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+    }
+
+    .about-slice:hover img.slice-bg {
+      filter: grayscale(0);
+      transform: scale(1.05);
+    }
+
+    .slice-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.85) 100%);
+      transition: background 0.3s ease;
+    }
+
+    .about-slice:hover .slice-shade {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+    }
+
+    .slice-content {
+      position: absolute;
+      bottom: 24px;
+      left: 20px;
+      right: 20px;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .slice-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .slice-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .about-foot-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: flex-start;
+      padding-top: 32px;
+      border-top: 1px solid rgba(13, 13, 13, 0.15);
+    }
+
+    .about-foot-text {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(13, 13, 13, 0.85);
+    }
+
+    .about-foot-text p + p {
+      margin-top: 16px;
+    }
+
+    .about-cities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .city-card {
+      background: rgba(13, 13, 13, 0.05);
+      border: 1px solid rgba(13, 13, 13, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 140px;
+      transition: var(--transition-smooth);
+    }
+
+    .city-card:hover {
+      background: var(--text-dark);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .city-card b {
+      font-family: var(--font-display);
+      font-size: 26px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .city-card span.city-desc {
+      font-size: 13px;
+      color: rgba(13, 13, 13, 0.65);
+    }
+
+    .city-card:hover span.city-desc {
+      color: rgba(238, 237, 232, 0.7);
+    }
+
+    .city-card span.et {
+      font-size: 15px;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       SECTION 4: FULL-WIDTH BOLD MARQUEE
+       ========================================================================== */
+    .marquee-banner {
+      width: 100%;
+      background: var(--orange);
+      color: #0d0d0d;
+      padding: 20px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      user-select: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .marquee-banner-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 32px;
+      animation: marquee 28s linear infinite;
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .marquee-banner-content span.star {
+      font-size: 24px;
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       SECTION 5: SAMPLE MIXES (WEB AUDIO API SYNTH + PLAYERS)
+       ========================================================================== */
+    .section-mixes {
+      width: 100%;
+      background: var(--bg);
+      color: var(--text);
+      padding: 100px 32px 80px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .mixes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .mixes-header-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.5vw, 76px);
+      line-height: 0.95;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .mixes-header-left p.sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    .audio-badge-status {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 79, 31, 0.05);
+    }
+
+    .mixes-tracklist {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border);
+    }
+
+    .mix-track-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 180px 140px;
+      align-items: center;
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition-smooth);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .mix-track-row:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .mix-track-row.is-active {
+      background: rgba(255, 79, 31, 0.06);
+      border-left: 4px solid var(--orange);
+    }
+
+    .mix-index {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-play-pause {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(238, 237, 232, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: var(--transition-smooth);
+      flex-shrink: 0;
+    }
+
+    .mix-track-row:hover .btn-play-pause,
+    .mix-track-row.is-active .btn-play-pause {
+      background: var(--orange);
+      color: #0d0d0d;
+      transform: scale(1.08);
+    }
+
+    .btn-play-pause svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .mix-info {
+      display: flex;
+      flex-direction: column;
+      padding-left: 12px;
+    }
+
+    .mix-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mix-title span.bpm-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--orange);
+      background: rgba(255, 79, 31, 0.1);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      font-weight: 400;
+    }
+
+    .mix-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .mix-progress-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0 16px;
+    }
+
+    .progress-bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--orange);
+      width: 0%;
+      border-radius: 3px;
+      transition: width 0.1s linear;
+    }
+
+    .time-indicators {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .mix-action {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      gap: 8px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       SECTION 6: EARLIER RELEASES / EVENT PACKAGES (ONE LAVENDER CARD)
+       ========================================================================== */
+    .section-releases {
+      width: 100%;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .releases-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 360px 360px;
+      width: 100%;
+    }
+
+    .rel-card {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .rel-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .rel-card-title {
+      background: var(--orange);
+      color: #0d0d0d;
+    }
+
+    .rel-card-title h3 {
+      font-family: var(--font-display);
+      font-size: 46px;
+      line-height: 0.95;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .rel-card-tan {
+      background: var(--bg-card-tan);
+      color: #0d0d0d;
+    }
+
+    .rel-card-dark {
+      background: #181716;
+      color: var(--text);
+    }
+
+    /* THE LAVENDER CARD */
+    .rel-card-lavender {
+      background: var(--bg-card-lavender);
+      color: #0d0d0d;
+    }
+
+    .rel-card-beige {
+      background: var(--bg-card-beige);
+      color: #0d0d0d;
+    }
+
+    .rel-card-photo {
+      background: #111;
+      padding: 0;
+    }
+
+    .rel-card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.5);
+      transition: var(--transition-smooth);
+    }
+
+    .rel-card-photo:hover img {
+      filter: grayscale(0);
+      transform: scale(1.04);
+    }
+
+    .rel-card .pkg-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .rel-card .pkg-title {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+      margin: 12px 0 8px;
+    }
+
+    .rel-card .pkg-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+
+    .rel-card .pkg-foot {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+
+    .rel-card-dark .pkg-foot {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* ==========================================================================
+       SECTION 7: ADVANCED GALLERY WITH CATEGORY FILTERS (18+ PHOTOS)
+       ========================================================================== */
+    .section-gallery {
+      width: 100%;
+      background: var(--bg);
+      padding: 100px 32px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gallery-head-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .gallery-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.5vw, 76px);
+      line-height: 0.95;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .gallery-head p.sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Filter Pills (Reference Styled) */
+    .gallery-filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      transition: var(--transition-smooth);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    .filter-btn.active {
+      background: var(--orange);
+      color: #0d0d0d;
+      border-color: var(--orange);
+      font-weight: 700;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gal-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #181716;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .gal-item.featured {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+
+    .gal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gal-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gal-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(13,13,13,0.95) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    .gal-caption {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.4;
+      transform: translateY(4px);
+      transition: transform 0.3s ease;
+    }
+
+    .gal-item:hover .gal-caption {
+      transform: translateY(0);
+      color: #fff;
+    }
+
+    /* Lightbox Modal */
+    dialog.lb-dialog {
+      margin: auto;
+      max-width: 90vw;
+      max-height: 92vh;
+      background: #0d0d0d;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      padding: 0;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.9);
+    }
+
+    dialog.lb-dialog::backdrop {
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(10px);
+    }
+
+    .lb-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .lb-caption {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .lb-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lb-nav-btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text);
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .lb-nav-btn:hover {
+      background: var(--orange);
+      color: #0d0d0d;
+      border-color: var(--orange);
+    }
+
+    .lb-media-wrap {
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 75vh;
+      overflow: hidden;
+    }
+
+    .lb-media-wrap img,
+    .lb-media-wrap video {
+      max-width: 86vw;
+      max-height: 72vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ==========================================================================
+       SECTION 8: SHOWS & CITIES (UPCOMING SHOWS)
+       ========================================================================== */
+    .section-shows {
+      width: 100%;
+      background: var(--bg-card-beige);
+      color: var(--text-dark);
+      padding: 100px 32px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shows-head {
+      margin-bottom: 48px;
+    }
+
+    .shows-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.5vw, 76px);
+      line-height: 0.95;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .shows-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(13, 13, 13, 0.2);
+    }
+
+    .show-row {
+      display: grid;
+      grid-template-columns: 140px 1.5fr 1fr 140px;
+      align-items: center;
+      padding: 24px 16px;
+      border-bottom: 1px solid rgba(13, 13, 13, 0.15);
+      transition: var(--transition-smooth);
+    }
+
+    .show-row:hover {
+      background: rgba(13, 13, 13, 0.05);
+      transform: translateX(6px);
+    }
+
+    .show-date {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .show-date b {
+      font-family: var(--font-display);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .show-date span {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(13, 13, 13, 0.6);
+    }
+
+    .show-venue b {
+      font-family: var(--font-display);
+      font-size: 22px;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .show-venue span {
+      font-size: 13px;
+      color: rgba(13, 13, 13, 0.7);
+    }
+
+    .show-city {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-transform: uppercase;
+      color: rgba(13, 13, 13, 0.8);
+    }
+
+    .show-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 10px 16px;
+      background: var(--text-dark);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .show-row:hover .show-btn {
+      background: var(--orange);
+      color: #0d0d0d;
+    }
+
+    /* ==========================================================================
+       SECTION 9: ADVANCED VIDEO REELS (REAL PLAYABLE VIDEOS)
+       ========================================================================== */
+    .section-reels {
+      width: 100%;
+      background: var(--bg);
+      padding: 100px 32px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .reels-head {
+      margin-bottom: 48px;
+    }
+
+    .reels-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.5vw, 76px);
+      line-height: 0.95;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .reels-head p.sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    .reels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .video-reel-card {
+      background: #161514;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .video-reel-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--orange);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .video-wrap {
+      position: relative;
+      aspect-ratio: 9/12;
+      background: #000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 3;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      background: rgba(13, 13, 13, 0.75);
+      backdrop-filter: blur(6px);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      color: var(--orange);
+    }
+
+    /* Video Play/Sound Overlay Controls */
+    .video-overlay-ctrls {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+    }
+
+    .video-ctrl-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(13, 13, 13, 0.8);
+      border: 1px solid var(--border);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+
+    .video-ctrl-btn:hover {
+      background: var(--orange);
+      color: #0d0d0d;
+      transform: scale(1.1);
+    }
+
+    .video-ctrl-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .reel-info {
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .reel-platform {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .reel-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .reel-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .reel-links-bar {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: var(--transition-smooth);
+    }
+
+    .social-pill-link:hover {
+      background: var(--orange);
+      color: #0d0d0d;
+      border-color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       SECTION 10: BOOKING SECTION & FORM
+       ========================================================================== */
+    .section-booking {
+      width: 100%;
+      background: #111;
+      position: relative;
+      padding: 100px 32px 90px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .booking-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.22;
+      filter: grayscale(0.8) blur(1px);
+    }
+
+    .booking-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(13,13,13,0.7) 0%, rgba(13,13,13,0.96) 80%);
+    }
+
+    .booking-container {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .booking-head {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .booking-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 84px);
+      line-height: 0.95;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .booking-head p.lead {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    .booking-quick-btns {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 28px 0 44px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-action.btn-primary {
+      background: var(--orange);
+      color: #0d0d0d;
+    }
+
+    .btn-action.btn-primary:hover {
+      background: #fff;
+      color: #0d0d0d;
+      transform: translateY(-2px);
+    }
+
+    .btn-action.btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-action.btn-outline:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .booking-form-box {
+      background: rgba(22, 21, 20, 0.85);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+    }
+
+    .booking-form-box h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: span 2;
+    }
+
+    .form-group label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(13, 13, 13, 0.8);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      transition: var(--transition-smooth);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+      background: #0d0d0d;
+      box-shadow: 0 0 0 2px rgba(255, 79, 31, 0.2);
+    }
+
+    .form-group select option {
+      background: #111;
+      color: #fff;
+    }
+
+    .form-status-msg {
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      min-height: 20px;
+      line-height: 1.4;
+    }
+
+    .form-status-msg.error {
+      color: #ff5555;
+    }
+
+    .form-status-msg.success {
+      color: #55ff77;
+    }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 18px;
+      padding: 16px;
+      background: var(--orange);
+      color: #0d0d0d;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-submit:hover {
+      background: #fff;
+      color: #0d0d0d;
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       SECTION 11: BIG FOOTER (10 SOUND PADS & CONDENSED TYPOGRAPHY)
+       ========================================================================== */
+    footer.site-footer {
+      width: 100%;
+      background: var(--bg);
+      color: var(--text);
+      padding: 80px 32px 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .footer-branding h2 {
+      font-family: var(--font-display);
+      font-size: clamp(60px, 9vw, 130px);
+      line-height: 0.85;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .footer-branding p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      max-width: 440px;
+    }
+
+    .footer-pads-section {
+      margin: 40px 0 60px;
+    }
+
+    .footer-pads-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .footer-pads-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .footer-pad {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 90px;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-pad:hover {
+      background: var(--orange);
+      color: #0d0d0d;
+      transform: translateY(-3px);
+      border-color: var(--orange);
+    }
+
+    .pad-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .footer-pad:hover .pad-num {
+      color: #0d0d0d;
+    }
+
+    .pad-label {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .footer-legal-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-legal-bar a:hover {
+      color: var(--orange);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (1440px, 768px, 390px)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        height: auto;
+      }
+      .hero-card-portrait {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 480px;
+      }
+      .about-slices {
+        height: 400px;
+      }
+      .releases-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .reels-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-pads-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .mix-track-row {
+        grid-template-columns: 60px 1fr 120px;
+      }
+      .mix-progress-box {
+        grid-column: span 3;
+        margin-top: 12px;
+        padding: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-tiles {
+        display: none;
+      }
+      .about-slices {
+        flex-direction: column;
+        height: auto;
+      }
+      .about-slice {
+        height: 140px;
+        flex: none;
+      }
+      .about-slice:hover {
+        height: 220px;
+      }
+      .about-foot-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gal-item.featured {
+        grid-column: span 1;
+        aspect-ratio: 4/3;
+      }
+      .reels-grid {
+        grid-template-columns: 1fr;
+      }
+      .show-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .show-city, .show-btn {
+        grid-column: span 2;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-group.full {
+        grid-column: span 1;
+      }
+      .footer-pads-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-about,
+      .section-mixes,
+      .section-gallery,
+      .section-shows,
+      .section-reels,
+      .section-booking,
+      footer.site-footer {
+        padding: 64px 20px 48px;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-card-portrait {
+        grid-column: span 1;
+        min-height: 420px;
+      }
+      .hero-card-orange,
+      .hero-card-cream,
+      .hero-card-mixer,
+      .hero-card-venue {
+        min-height: 220px;
+      }
+      .releases-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .booking-form-box {
+        padding: 24px 18px;
+      }
+      .footer-pads-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .mix-track-row {
+        grid-template-columns: 46px 1fr;
+        gap: 14px;
+        padding: 18px 10px;
+      }
+      .mix-index span {
+        display: none;
+      }
+      .mix-info {
+        padding-left: 0;
+      }
+      .mix-title {
+        font-size: 20px;
+        line-height: 1.15;
+      }
+      .mix-action {
+        display: none;
+      }
+      .mix-progress-box {
+        grid-column: span 2;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       SECTION 1: TOP BAR & NAVIGATION TILES (HEADER)
+       ======================================================================== -->
+  <header class="site-header" id="top">
+    <div class="top-bar">
+      <!-- Animated Jog Wheel -->
+      <a href="#top" class="jog-box" aria-label="DJ Kroch Home">
+        <div class="jog-wheel" aria-hidden="true">
+          <div class="jog-inner"></div>
+        </div>
+        <div class="jog-meta">
+          <span class="jog-title">DJ KROCH</span>
+          <span class="jog-status">LIVE ON AIR</span>
+        </div>
+      </a>
+
+      <!-- Continuous Scrolling Marquee Ticker -->
+      <div class="marquee-track-top" aria-hidden="true">
+        <div class="marquee-content-top">
+          <span>DJ KROCH ENTERTAINMENT</span>
+          <span class="dot">✦</span>
+          <span>BAHIR DAR &amp; ADDIS ABABA</span>
+          <span class="dot">✦</span>
+          <span>MOVE THE CROWD</span>
+          <span class="dot">✦</span>
+          <span class="et">ዲጄ ክሮች ኢንተርቴይመንት</span>
+          <span class="dot">✦</span>
+          <span>BOOKINGS OPEN 2026/2027</span>
+          <span class="dot">✦</span>
+          <span>WEDDINGS · CONCERTS · FASHION SHOWS · CORPORATE</span>
+          <span class="dot">✦</span>
+          <!-- Duplicate for seamless infinite loop -->
+          <span>DJ KROCH ENTERTAINMENT</span>
+          <span class="dot">✦</span>
+          <span>BAHIR DAR &amp; ADDIS ABABA</span>
+          <span class="dot">✦</span>
+          <span>MOVE THE CROWD</span>
+          <span class="dot">✦</span>
+          <span class="et">ዲጄ ክሮች ኢንተርቴይመንት</span>
+          <span class="dot">✦</span>
+          <span>BOOKINGS OPEN 2026/2027</span>
+          <span class="dot">✦</span>
+          <span>WEDDINGS · CONCERTS · FASHION SHOWS · CORPORATE</span>
+          <span class="dot">✦</span>
+        </div>
+      </div>
+
+      <!-- Spinning Star -->
+      <div class="star-box" aria-hidden="true">
+        <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Navigation Picture Tiles (Desktop) -->
+    <nav class="nav-tiles" aria-label="Main Navigation">
+      <a href="#events" class="nav-tile">
+        <img src="images/gal-1.jpg" alt="" class="nav-tile-thumb" width="46" height="46">
+        <div class="nav-tile-info">
+          <span class="nav-tile-index">01 // EVENTS</span>
+          <span class="nav-tile-label">EVENTS WE PLAY</span>
+          <span class="nav-tile-sub et">ሰርግ እና ሁነቶች</span>
+        </div>
+      </a>
+      <a href="#gallery" class="nav-tile">
+        <img src="images/gal-2.jpg" alt="" class="nav-tile-thumb" width="46" height="46">
+        <div class="nav-tile-info">
+          <span class="nav-tile-index">02 // GALLERY</span>
+          <span class="nav-tile-label">WEDDING MOMENTS</span>
+          <span class="nav-tile-sub">Real dance floors</span>
+        </div>
+      </a>
+      <a href="#about" class="nav-tile">
+        <img src="images/about-1.jpg" alt="" class="nav-tile-thumb" width="46" height="46">
+        <div class="nav-tile-info">
+          <span class="nav-tile-index">03 // ABOUT</span>
+          <span class="nav-tile-label">BAHIR DAR &amp; ADDIS</span>
+          <span class="nav-tile-sub et">ባሕር ዳር እና አዲስ አበባ</span>
+        </div>
+      </a>
+      <a href="#book" class="nav-tile cta-tile">
+        <img src="images/logo.png" alt="" class="nav-tile-thumb" width="46" height="46">
+        <div class="nav-tile-info">
+          <span class="nav-tile-index">04 // RESERVE</span>
+          <span class="nav-tile-label">BOOK THE DJ</span>
+          <span class="nav-tile-sub">Check date availability →</span>
+        </div>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       SECTION 2: HERO GRID (ADVANCED PHOTO / VIDEO DUAL MODE)
+       ======================================================================== -->
+  <section class="hero-section" aria-label="Hero">
+    <div class="hero-grid">
+      <!-- 1. Top-Left Orange Card -->
+      <a href="#book" class="hero-card-orange">
+        <div class="card-tag">
+          <span>DJ KROCH ENTERTAINMENT</span>
+          <span>✦ 2026</span>
+        </div>
+        <canvas class="dot-wave-canvas" id="heroWaveCanvas"></canvas>
+        <div>
+          <div class="card-main-title">MOVE<br>THE<br>CROWD.</div>
+          <div class="card-ethio">ዲጄ ክሮች ኢንተርቴይመንት</div>
+        </div>
+        <div class="card-foot">
+          <span>BOOK THE DJ</span>
+          <span>AVAILABLE NOW →</span>
+        </div>
+      </a>
+
+      <!-- 2. Center 2x2 Massive Portrait / Live Video Card -->
+      <div class="hero-card-portrait" id="heroPortraitCard">
+        <img src="images/hero.jpg" alt="DJ Kroch with headphones and mic under the flower arches" class="portrait-bg">
+        <video class="portrait-video" id="heroBoothVideo" src="videos/video-4.mp4" muted loop playsinline preload="none"></video>
+        <div class="hero-portrait-overlay"></div>
+        
+        <div class="hero-portrait-top">
+          <div class="badge">DJ &amp; PRODUCER · ETHIOPIA</div>
+          <!-- Advanced Photo / Live Video Booth Toggle -->
+          <button class="btn-hero-mode-toggle" id="heroModeBtn" type="button" aria-label="Toggle live booth video">
+            <span class="live-dot"></span>
+            <span id="heroModeLabel">BOOTH CAM [VIDEO]</span>
+          </button>
+        </div>
+
+        <div class="hero-portrait-bottom">
+          <div class="sub-tag">PROFESSIONAL EVENT ENTERTAINMENT</div>
+          <h1 class="hero-big-name">DJ KROCH</h1>
+        </div>
+      </div>
+
+      <!-- 3. Top-Right Cream Tracklist-Styled Card -->
+      <a href="#events" class="hero-card-cream">
+        <div class="card-tag">
+          <span>EVENTS WE PLAY</span>
+          <span class="et">ዝግጅቶች</span>
+        </div>
+        <ul class="hero-events-mini">
+          <li><b>01 Weddings</b><span class="et">ሰርግ</span></li>
+          <li><b>02 Concerts</b><span class="et">ኮንሰርቶች</span></li>
+          <li><b>03 Fashion Shows</b><span class="et">የፋሽን ትርኢቶች</span></li>
+          <li><b>04 Corporate</b><span class="et">የኮርፖሬት መርሃ ግብሮች</span></li>
+          <li><b>05 House Parties</b><span class="et">ሃውስ ፓርቲ</span></li>
+        </ul>
+        <div class="card-foot">
+          <span>VIEW ALL 7 EVENT TYPES</span>
+          <span>EXPLORE →</span>
+        </div>
+      </a>
+
+      <!-- 4. Bottom-Left Dark Mixer Card with 4-Channel VU Meters -->
+      <div class="hero-card-mixer">
+        <div class="card-meta">
+          <span>SOUND &amp; ENERGY</span>
+          <span>CH 1-4 ACTIVE</span>
+        </div>
+        <div class="mixer-channels" aria-hidden="true" id="vuMeterGroup">
+          <div class="channel-column">
+            <div class="channel-meter"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            <span class="channel-label">MIC</span>
+          </div>
+          <div class="channel-column">
+            <div class="channel-meter"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            <span class="channel-label">DECK A</span>
+          </div>
+          <div class="channel-column">
+            <div class="channel-meter"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            <span class="channel-label">DECK B</span>
+          </div>
+          <div class="channel-column">
+            <div class="channel-meter"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            <span class="channel-label">MASTER</span>
+          </div>
+        </div>
+        <div>
+          <div class="card-title">CURATED FOR THE ROOM</div>
+          <div class="card-meta" style="margin-top:4px">
+            <span>START WITH</span>
+            <span>124 BPM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Bottom-Right Dark Venue Card -->
+      <a href="#book" class="hero-card-venue">
+        <img src="images/book.jpg" alt="Crowd dancing as DJ Kroch hosts a night wedding" class="venue-bg">
+        <div class="venue-overlay"></div>
+        <div class="card-meta">
+          <span>NEXT CELEBRATION</span>
+          <span>DATES AVAILABLE</span>
+        </div>
+        <div>
+          <div class="venue-title">BAHIR DAR &amp;<br>ADDIS ABABA</div>
+          <div class="card-meta" style="margin-top:6px; color:var(--text)">
+            <span>RESERVE YOUR DATE</span>
+            <span>SECURE SPOT →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 3: ABOUT SECTION (VERTICAL INTERACTIVE SLICES)
+       ======================================================================== -->
+  <section class="section-about" id="about">
+    <div class="container">
+      <div class="about-head">
+        <span class="section-indicator">(02) ABOUT DJ KROCH</span>
+        <h2>MUSIC THAT KEEPS THE FLOOR FULL</h2>
+        <p class="sub">A little soul. A lot of energy. Built around your crowd and every unhurried groove.</p>
+      </div>
+
+      <!-- 5 Interactive Vertical Slices with Workspace Photos -->
+      <div class="about-slices" role="region" aria-label="Photo slices">
+        <div class="about-slice" tabindex="0">
+          <img src="images/photo-1.jpg" alt="DJ Kroch at the Pioneer console" class="slice-bg">
+          <div class="slice-shade"></div>
+          <div class="slice-content">
+            <div class="slice-num">01 // TRADITION</div>
+            <div class="slice-title">AN UNHURRIED GROOVE</div>
+          </div>
+        </div>
+        <div class="about-slice" tabindex="0">
+          <img src="images/gal-2.jpg" alt="DJ Kroch with headphones and mic under the flower arches" class="slice-bg">
+          <div class="slice-shade"></div>
+          <div class="slice-content">
+            <div class="slice-num">02 // MASTERY</div>
+            <div class="slice-title">ROOTED IN HOUSE &amp; TRAD</div>
+          </div>
+        </div>
+        <div class="about-slice default-wide" tabindex="0">
+          <img src="images/gal-1.jpg" alt="Crowd dancing as DJ Kroch hosts a night wedding" class="slice-bg">
+          <div class="slice-shade"></div>
+          <div class="slice-content">
+            <div class="slice-num">03 // STAGE ENERGY</div>
+            <div class="slice-title">MOVE THE CROWD</div>
+          </div>
+        </div>
+        <div class="about-slice" tabindex="0">
+          <img src="images/photo-5.jpg" alt="DJ Kroch hyping the crowd on the wireless microphone" class="slice-bg">
+          <div class="slice-shade"></div>
+          <div class="slice-content">
+            <div class="slice-num">04 // MOMENTS</div>
+            <div class="slice-title">EVERY DETAIL COUNTS</div>
+          </div>
+        </div>
+        <div class="about-slice" tabindex="0">
+          <img src="images/photo-8.jpg" alt="Addis Ababa grand hotel ballroom celebration" class="slice-bg">
+          <div class="slice-shade"></div>
+          <div class="slice-content">
+            <div class="slice-num">05 // CITIES</div>
+            <div class="slice-title">BAHIR DAR &amp; ADDIS</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Foot Copy & Two Cities Cards -->
+      <div class="about-foot-grid">
+        <div class="about-foot-text">
+          <p><strong>DJ Kroch Entertainment</strong> is a professional DJ and event service. Every set is curated for the room: the people, the occasion and the moment.</p>
+          <p>Tell us what your event is about and we will build the playlist and the pace around it.</p>
+        </div>
+        <div class="about-cities-grid">
+          <div class="city-card">
+            <div>
+              <b>Bahir Dar</b>
+              <span class="city-desc">Based here, playing here</span>
+            </div>
+            <span class="et">ባሕር ዳር</span>
+          </div>
+          <div class="city-card">
+            <div>
+              <b>Addis Ababa</b>
+              <span class="city-desc">Available for events across the city</span>
+            </div>
+            <span class="et">አዲስ አበባ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 4: FULL-WIDTH BOLD MARQUEE TICKER
+       ======================================================================== -->
+  <div class="marquee-banner" aria-hidden="true">
+    <div class="marquee-banner-content">
+      <span>DJ KROCH ENTERTAINMENT</span>
+      <span class="star">✦</span>
+      <span>MOVE THE CROWD</span>
+      <span class="star">✦</span>
+      <span class="et">ዲጄ ክሮች ኢንተርቴይመንት</span>
+      <span class="star">✦</span>
+      <span>WEDDINGS · CONCERTS · FASHION SHOWS · CORPORATE EVENTS</span>
+      <span class="star">✦</span>
+      <span>BAHIR DAR &amp; ADDIS ABABA</span>
+      <span class="star">✦</span>
+      <!-- Duplicate for infinite scroll -->
+      <span>DJ KROCH ENTERTAINMENT</span>
+      <span class="star">✦</span>
+      <span>MOVE THE CROWD</span>
+      <span class="star">✦</span>
+      <span class="et">ዲጄ ክሮች ኢንተርቴይመንት</span>
+      <span class="star">✦</span>
+      <span>WEDDINGS · CONCERTS · FASHION SHOWS · CORPORATE EVENTS</span>
+      <span class="star">✦</span>
+      <span>BAHIR DAR &amp; ADDIS ABABA</span>
+      <span class="star">✦</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SECTION 5: SAMPLE MIXES (WEB AUDIO API SYNTH + REAL MP3 FALLBACK)
+       ======================================================================== -->
+  <section class="section-mixes" id="music">
+    <div class="container">
+      <div class="mixes-header">
+        <div class="mixes-header-left">
+          <span class="section-indicator">(03) SAMPLE MIXES</span>
+          <h2>HOVER A TRACK TO HEAR IT</h2>
+          <p class="sub">3 exclusive sets. One plays at a time. Click play or scrub to preview the energy.</p>
+        </div>
+        <div class="audio-badge-status" id="audioEngineBadge">
+          <span class="jog-status">AUDIO ENGINE READY</span>
+        </div>
+      </div>
+
+      <!-- 3 Sample Mix Players -->
+      <div class="mixes-tracklist" role="region" aria-label="Sample Mix Players">
+        <!-- Mix 1 -->
+        <div class="mix-track-row" id="mixRow-1" data-index="1" data-src="audio/mix-1.mp3" data-duration="23">
+          <div class="mix-index">
+            <button class="btn-play-pause" type="button" aria-label="Play Track 1 - Official Intro">
+              <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"></polygon></svg>
+            </button>
+            <span>01</span>
+          </div>
+          <div class="mix-info">
+            <div class="mix-title">
+              <span>OFFICIAL INTRO &amp; SIGNATURE DROP</span>
+              <span class="bpm-tag" style="background:rgba(255,0,0,0.18);color:#ff4d4d;border-color:rgba(255,0,0,0.3)">YOUTUBE OFFICIAL</span>
+            </div>
+            <div class="mix-sub">DJ Kroch Entertainment official signature intro sound &middot; <a href="https://youtu.be/L5IlW_OQiUM?si=4LmQJTq9vg6zVH5B" target="_blank" rel="noopener" style="color:var(--orange);text-decoration:underline;">Watch original on YouTube &rarr;</a></div>
+          </div>
+          <div class="mix-progress-box">
+            <div class="progress-bar-wrap" role="slider" aria-label="Seek track" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-fill"></div>
+            </div>
+            <div class="time-indicators">
+              <span class="time-elapsed">0:00</span>
+              <span class="time-left">-0:23</span>
+            </div>
+          </div>
+          <div class="mix-action">
+            <span>OFFICIAL TRACK</span>
+            <span>0:23</span>
+          </div>
+        </div>
+
+        <!-- Mix 2 -->
+        <div class="mix-track-row" id="mixRow-2" data-index="2" data-src="audio/mix-2.mp3" data-duration="161">
+          <div class="mix-index">
+            <button class="btn-play-pause" type="button" aria-label="Play Track 2 - Wedding Special">
+              <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"></polygon></svg>
+            </button>
+            <span>02</span>
+          </div>
+          <div class="mix-info">
+            <div class="mix-title">
+              <span>LIVE WEDDING &amp; AFROBEATS SPECIAL</span>
+              <span class="bpm-tag">122 BPM</span>
+            </div>
+            <div class="mix-sub">Live celebration audio, Ethiopian traditional modern fusions, and wild dance floor anthems.</div>
+          </div>
+          <div class="mix-progress-box">
+            <div class="progress-bar-wrap" role="slider" aria-label="Seek track" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-fill"></div>
+            </div>
+            <div class="time-indicators">
+              <span class="time-elapsed">0:00</span>
+              <span class="time-left">-2:41</span>
+            </div>
+          </div>
+          <div class="mix-action">
+            <span>LIVE MIX</span>
+            <span>2:41</span>
+          </div>
+        </div>
+
+        <!-- Mix 3 -->
+        <div class="mix-track-row" id="mixRow-3" data-index="3" data-src="audio/mix-3.mp3" data-duration="45">
+          <div class="mix-index">
+            <button class="btn-play-pause" type="button" aria-label="Play Track 3 - Ethio-Club Sounds">
+              <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"></polygon></svg>
+            </button>
+            <span>03</span>
+          </div>
+          <div class="mix-info">
+            <div class="mix-title">
+              <span>ETHIO-CLUB &amp; URBAN SOUNDS LIVE SET</span>
+              <span class="bpm-tag">128 BPM</span>
+            </div>
+            <div class="mix-sub">Club cuts, heavy basslines, Guragigna and modern remixes recorded live at peak time.</div>
+          </div>
+          <div class="mix-progress-box">
+            <div class="progress-bar-wrap" role="slider" aria-label="Seek track" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-fill"></div>
+            </div>
+            <div class="time-indicators">
+              <span class="time-elapsed">0:00</span>
+              <span class="time-left">-0:45</span>
+            </div>
+          </div>
+          <div class="mix-action">
+            <span>LIVE MIX</span>
+            <span>0:45</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 6: EARLIER RELEASES / EVENT PACKAGES (ONE LAVENDER CARD)
+       ======================================================================== -->
+  <section class="section-releases" id="events" aria-label="Event Packages">
+    <div class="releases-grid">
+      <!-- 1. Title Card (Bright Orange) -->
+      <div class="rel-card rel-card-title">
+        <span class="pkg-tag">
+          <span>(04) EVENT PACKAGES</span>
+          <span>CURATED</span>
+        </span>
+        <h3>7 WAYS TO MOVE YOUR CROWD.</h3>
+        <span class="pkg-foot">
+          <span>ETHIOPIA &amp; BEYOND</span>
+          <span>DISCOVER →</span>
+        </span>
+      </div>
+
+      <!-- 2. Tan/Gold Card: Weddings -->
+      <a href="#book" class="rel-card rel-card-tan">
+        <span class="pkg-tag">
+          <span>01 // WEDDING</span>
+          <span class="et">ሰርግ</span>
+        </span>
+        <div>
+          <div class="pkg-title">THE WEDDING SPECIAL</div>
+          <p class="pkg-desc">“From the entrance and the family blessings to the wild midnight dance floor. Seamless, respectful and electric.”</p>
+        </div>
+        <span class="pkg-foot">
+          <span>FULL SOUND &amp; LIGHTING</span>
+          <span>INQUIRE →</span>
+        </span>
+      </a>
+
+      <!-- 3. Dark Card: Concerts & Festivals -->
+      <a href="#book" class="rel-card rel-card-dark">
+        <span class="pkg-tag">
+          <span>02 // CONCERT</span>
+          <span class="et">ኮንሰርቶች</span>
+        </span>
+        <div>
+          <div class="pkg-title">FESTIVAL &amp; STAGE</div>
+          <p class="pkg-desc">“Massive stage command, high-octane drops, and crowd interaction built for large festival grounds.”</p>
+        </div>
+        <span class="pkg-foot">
+          <span>MAIN STAGE SETS</span>
+          <span>INQUIRE →</span>
+        </span>
+      </a>
+
+      <!-- 4. THE LAVENDER CARD (Requested: One Lavender Card #bbaae9) -->
+      <a href="#book" class="rel-card rel-card-lavender">
+        <span class="pkg-tag">
+          <span>03 // CORPORATE</span>
+          <span class="et">የኮርፖሬት</span>
+        </span>
+        <div>
+          <div class="pkg-title">CORPORATE &amp; GALA</div>
+          <p class="pkg-desc">“Brand launches, award galas and year-end celebrations. Elegant lounge rhythms that transition effortlessly into late-night joy.”</p>
+        </div>
+        <span class="pkg-foot">
+          <span>PREMIUM SOUND</span>
+          <span>INQUIRE →</span>
+        </span>
+      </a>
+
+      <!-- 5. Photo Card 1 -->
+      <div class="rel-card rel-card-photo">
+        <img src="images/gal-4.jpg" alt="The bridal party dancing in front of the golden thrones">
+      </div>
+
+      <!-- 6. Dark Card: Fashion & Private -->
+      <a href="#book" class="rel-card rel-card-dark">
+        <span class="pkg-tag">
+          <span>04 // FASHION</span>
+          <span class="et">የፋሽን ትርኢቶች</span>
+        </span>
+        <div>
+          <div class="pkg-title">FASHION &amp; RUNWAY</div>
+          <p class="pkg-desc">“Exact tempo pacing, modern haute grooves, and atmospheric design for designers and runway shows.”</p>
+        </div>
+        <span class="pkg-foot">
+          <span>TIMED RUNWAY CUES</span>
+          <span>INQUIRE →</span>
+        </span>
+      </a>
+
+      <!-- 7. Photo Card 2 -->
+      <div class="rel-card rel-card-photo">
+        <img src="images/gal-5.jpg" alt="A wedding group photo on the dance floor">
+      </div>
+
+      <!-- 8. Beige Action Card -->
+      <a href="#book" class="rel-card rel-card-beige">
+        <span class="pkg-tag">
+          <span>05 // CUSTOM</span>
+          <span>PARTIES &amp; SCHOOLS</span>
+        </span>
+        <div>
+          <div class="pkg-title">HOUSE &amp; SCHOOL EVENTS</div>
+          <p class="pkg-desc">“House parties, graduation nights, and school events. Tell us your date and we bring the equipment and energy.”</p>
+        </div>
+        <span class="pkg-foot">
+          <span>ALL PACKAGES</span>
+          <span>BOOK NOW →</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 7: ADVANCED GALLERY WITH CATEGORY FILTERS (ALL WORKSPACE PHOTOS)
+       ======================================================================== -->
+  <section class="section-gallery" id="gallery">
+    <div class="container">
+      <div class="gallery-head-wrap">
+        <div class="gallery-head">
+          <span class="section-indicator">(05) GALLERY</span>
+          <h2>WEDDING MOMENTS</h2>
+          <p class="sub">Real nights, real dance floors. Tap any photo to see it in full resolution.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="gallery-filter-tabs" role="tablist" aria-label="Photo Filters">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">ALL (18)</button>
+          <button class="filter-btn" data-filter="wedding" role="tab" aria-selected="false">WEDDINGS · ሰርግ</button>
+          <button class="filter-btn" data-filter="performance" role="tab" aria-selected="false">STAGE &amp; BOOTH</button>
+          <button class="filter-btn" data-filter="crowd" role="tab" aria-selected="false">CROWD &amp; DANCE</button>
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="mainGalleryGrid">
+        <!-- 1. Crowd dancing as DJ Kroch hosts night wedding -->
+        <button class="gal-item featured" data-cat="wedding crowd" type="button" aria-label="Open photo: Crowd dancing as DJ Kroch hosts a night wedding">
+          <img src="images/gal-1.jpg" alt="Crowd dancing as DJ Kroch hosts a night wedding" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Crowd dancing as DJ Kroch hosts a night wedding</span>
+          </div>
+        </button>
+
+        <!-- 2. DJ Kroch with headphones under flower arches -->
+        <button class="gal-item" data-cat="wedding performance" type="button" aria-label="Open photo: DJ Kroch with headphones and mic under the flower arches">
+          <img src="images/gal-2.jpg" alt="DJ Kroch with headphones and mic under the flower arches" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">DJ Kroch with headphones and mic under the flower arches</span>
+          </div>
+        </button>
+
+        <!-- 3. DJ Kroch with the bridesmaids on stage -->
+        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: DJ Kroch with the bridesmaids on stage">
+          <img src="images/gal-3.jpg" alt="DJ Kroch with the bridesmaids on stage" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">DJ Kroch with the bridesmaids on stage</span>
+          </div>
+        </button>
+
+        <!-- 4. The bridal party dancing in front of golden thrones -->
+        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: The bridal party dancing in front of the golden thrones">
+          <img src="images/gal-4.jpg" alt="The bridal party dancing in front of the golden thrones" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">The bridal party dancing in front of the golden thrones</span>
+          </div>
+        </button>
+
+        <!-- 5. A wedding group photo on dance floor -->
+        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: A wedding group photo on the dance floor">
+          <img src="images/gal-5.jpg" alt="A wedding group photo on the dance floor" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">A wedding group photo on the dance floor</span>
+          </div>
+        </button>
+
+        <!-- 6. Garden wedding venue with flower arches at dusk -->
+        <button class="gal-item" data-cat="wedding" type="button" aria-label="Open photo: Garden wedding venue with flower arches at dusk">
+          <img src="images/gal-6.jpg" alt="Garden wedding venue with flower arches at dusk" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Garden wedding venue with flower arches at dusk</span>
+          </div>
+        </button>
+
+        <!-- 7. DJ Kroch console closeup -->
+        <button class="gal-item" data-cat="performance" type="button" aria-label="Open photo: DJ Kroch live at the Pioneer console, Bahir Dar">
+          <img src="images/photo-1.jpg" alt="DJ Kroch live at the Pioneer console, Bahir Dar" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">DJ Kroch live at the Pioneer console, Bahir Dar</span>
+          </div>
+        </button>
+
+        <!-- 8. Grand entrance celebration -->
+        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: Grand entrance celebration with bridal entourage">
+          <img src="images/photo-2.jpg" alt="Grand entrance celebration with bridal entourage" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Grand entrance celebration with bridal entourage</span>
+          </div>
+        </button>
+
+        <!-- 9. Stage lighting setup -->
+        <button class="gal-item" data-cat="performance wedding" type="button" aria-label="Open photo: Stage lighting and luxury floral arch setup">
+          <img src="images/photo-4.jpg" alt="Stage lighting and luxury floral arch setup" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Stage lighting and luxury floral arch setup</span>
+          </div>
+        </button>
+
+        <!-- 10. DJ Kroch hyping the crowd on mic -->
+        <button class="gal-item featured" data-cat="performance crowd" type="button" aria-label="Open photo: DJ Kroch hyping the crowd on the wireless microphone">
+          <img src="images/photo-5.jpg" alt="DJ Kroch hyping the crowd on the wireless microphone" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">DJ Kroch hyping the crowd on the wireless microphone</span>
+          </div>
+        </button>
+
+        <!-- 11. Evening lakeside reception -->
+        <button class="gal-item" data-cat="wedding" type="button" aria-label="Open photo: Elegant outdoor lakeside reception at dusk">
+          <img src="images/photo-7.jpg" alt="Elegant outdoor lakeside reception at dusk" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Elegant outdoor lakeside reception at dusk</span>
+          </div>
+        </button>
+
+        <!-- 12. Addis Ababa ballroom party -->
+        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: Addis Ababa grand hotel ballroom celebration">
+          <img src="images/photo-8.jpg" alt="Addis Ababa grand hotel ballroom celebration" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Addis Ababa grand hotel ballroom celebration</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Lightbox Modal (Supports Images & Videos) -->
+  <dialog class="lb-dialog" id="lightboxModal" aria-label="Media Lightbox">
+    <div class="lb-header">
+      <span class="lb-caption" id="lightboxCaption">Wedding moment</span>
+      <div class="lb-controls">
+        <button class="lb-nav-btn" type="button" id="lbPrev" aria-label="Previous item">← PREV</button>
+        <button class="lb-nav-btn" type="button" id="lbNext" aria-label="Next item">NEXT →</button>
+        <button class="lb-nav-btn" type="button" id="lightboxClose" aria-label="Close lightbox">CLOSE [ESC]</button>
+      </div>
+    </div>
+    <div class="lb-media-wrap" id="lbMediaContainer">
+      <img id="lightboxImg" src="" alt="">
+    </div>
+  </dialog>
+
+  <!-- ========================================================================
+       SECTION 8: SHOWS & CITIES (UPCOMING SHOWS)
+       ======================================================================== -->
+  <section class="section-shows" id="shows">
+    <div class="container">
+      <div class="shows-head">
+        <span class="section-indicator">(06) SHOWS &amp; CITIES</span>
+        <h2>SEE YOU IN THE ROOM</h2>
+        <p class="sub" style="color:rgba(13,13,13,0.7)">Available for premier events across Ethiopia. Reserve your celebration date.</p>
+      </div>
+
+      <div class="shows-list">
+        <div class="show-row">
+          <div class="show-date">
+            <b>NOV 2026</b>
+            <span>WEEKENDS</span>
+          </div>
+          <div class="show-venue">
+            <b>AVANTI BLUE NILE GRAND BALLROOM</b>
+            <span>Wedding &amp; Private Gala Sessions</span>
+          </div>
+          <div class="show-city">BAHIR DAR, ETHIOPIA</div>
+          <a href="#book" class="show-btn">CHECK DATE</a>
+        </div>
+
+        <div class="show-row">
+          <div class="show-date">
+            <b>DEC 2026</b>
+            <span>HOLIDAY SEASON</span>
+          </div>
+          <div class="show-venue">
+            <b>SKYLIGHT HOTEL &amp; MILLENNIUM HALL</b>
+            <span>Corporate Galas &amp; Year-End Concerts</span>
+          </div>
+          <div class="show-city">ADDIS ABABA, ETHIOPIA</div>
+          <a href="#book" class="show-btn">CHECK DATE</a>
+        </div>
+
+        <div class="show-row">
+          <div class="show-date">
+            <b>JAN 2027</b>
+            <span>WEDDING SEASON</span>
+          </div>
+          <div class="show-venue">
+            <b>KURIFTU RESORT &amp; SPA</b>
+            <span>Lakeside Receptions &amp; Luxury Parties</span>
+          </div>
+          <div class="show-city">BAHIR DAR, ETHIOPIA</div>
+          <a href="#book" class="show-btn">CHECK DATE</a>
+        </div>
+
+        <div class="show-row">
+          <div class="show-date">
+            <b>2027 ONWARD</b>
+            <span>ALL DATES</span>
+          </div>
+          <div class="show-venue">
+            <b>YOUR CHOSEN VENUE</b>
+            <span>Weddings, Concerts, Fashion &amp; Galas</span>
+          </div>
+          <div class="show-city">ANY LOCATION</div>
+          <a href="#book" class="show-btn">BOOK NOW</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 9: ADVANCED VIDEO REELS (ACTUAL VIDEOS FROM WORKSPACE)
+       ======================================================================== -->
+  <section class="section-reels" id="watch">
+    <div class="container">
+      <div class="reels-head">
+        <span class="section-indicator">(07) WATCH &amp; SOCIALS</span>
+        <h2>SEE IT BEFORE YOU BOOK IT</h2>
+        <p class="sub">Clips from the booth, the floor, and the dance moments in between. Click to play or preview video reels.</p>
+      </div>
+
+      <div class="reels-grid">
+        <!-- Reel 1: Live Wedding Dance Floor Hype -->
+        <div class="video-reel-card">
+          <div class="video-wrap" data-video-src="videos/video-2.mp4">
+            <span class="video-badge">LIVE SET // 1080P</span>
+            <video src="videos/video-2.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="video-overlay-ctrls">
+              <button class="video-ctrl-btn toggle-play" type="button" aria-label="Play/Pause Video">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"></polygon></svg>
+              </button>
+              <button class="video-ctrl-btn toggle-mute" type="button" aria-label="Mute/Unmute Video">
+                <svg class="icon-vol-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </button>
+              <button class="video-ctrl-btn expand-modal" type="button" aria-label="Full screen view">
+                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="reel-info">
+            <span class="reel-platform">WEDDING FLOOR // LIVE DANCE</span>
+            <div class="reel-title">HYPING THE CROWD</div>
+            <p class="reel-desc">Witness the raw excitement as DJ Kroch leads the room through traditional blessings into modern floorfillers.</p>
+          </div>
+        </div>
+
+        <!-- Reel 2: Crowd Energy & DJ Drop -->
+        <div class="video-reel-card">
+          <div class="video-wrap" data-video-src="videos/video-3.mp4">
+            <span class="video-badge">DROP // 128 BPM</span>
+            <video src="videos/video-3.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="video-overlay-ctrls">
+              <button class="video-ctrl-btn toggle-play" type="button" aria-label="Play/Pause Video">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"></polygon></svg>
+              </button>
+              <button class="video-ctrl-btn toggle-mute" type="button" aria-label="Mute/Unmute Video">
+                <svg class="icon-vol-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </button>
+              <button class="video-ctrl-btn expand-modal" type="button" aria-label="Full screen view">
+                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="reel-info">
+            <span class="reel-platform">BOOTH CAM // PEAK ENERGY</span>
+            <div class="reel-title">ETHIO-CLUB CUTS</div>
+            <p class="reel-desc">Fast-paced mixing, bassline drops, and responsive crowd interaction that keeps everyone on their feet.</p>
+          </div>
+        </div>
+
+        <!-- Reel 3: Bridal Entrance & Grand Stage -->
+        <div class="video-reel-card">
+          <div class="video-wrap" data-video-src="videos/video-5.mp4">
+            <span class="video-badge">STAGE CAM // CEREMONY</span>
+            <video src="videos/video-5.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="video-overlay-ctrls">
+              <button class="video-ctrl-btn toggle-play" type="button" aria-label="Play/Pause Video">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"></polygon></svg>
+              </button>
+              <button class="video-ctrl-btn toggle-mute" type="button" aria-label="Mute/Unmute Video">
+                <svg class="icon-vol-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </button>
+              <button class="video-ctrl-btn expand-modal" type="button" aria-label="Full screen view">
+                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="reel-info">
+            <span class="reel-platform">RECEPTION // GRAND ENTRANCE</span>
+            <div class="reel-title">CEREMONY TO PARTY</div>
+            <p class="reel-desc">Flawless timing for the bridal entrance, champagne toasts, and the transition into full celebration.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Channel Quick Links -->
+      <div class="reel-links-bar">
+        <a class="social-pill-link" href="https://www.youtube.com/@DJKROCHENTERTAINMENT" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YOUTUBE LIVE MIXES
+        </a>
+        <a class="social-pill-link" href="https://www.tiktok.com/@djkroch2" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          TIKTOK SHORT CLIPS
+        </a>
+        <a class="social-pill-link" href="https://www.instagram.com/djkroch" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          INSTAGRAM STORIES
+        </a>
+        <a class="social-pill-link" href="https://www.facebook.com/kroch.melkie" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          FACEBOOK COMMUNITY
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 10: BOOKING SECTION & FORM
+       ======================================================================== -->
+  <section class="section-booking" id="book">
+    <img src="images/book.jpg" alt="" class="booking-bg" aria-hidden="true">
+    <div class="booking-overlay"></div>
+
+    <div class="booking-container">
+      <div class="booking-head">
+        <span class="section-indicator">(08) BOOKING</span>
+        <h2>BRING THESE SONGS TO YOUR STAGE</h2>
+        <p class="lead">Send us the date, the place and the type of event. We will reply with availability.</p>
+        
+        <div class="booking-quick-btns">
+          <a class="btn-action btn-primary" href="mailto:djkrochentertainment@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"/></svg>
+            EMAIL DJ KROCH
+          </a>
+          <a class="btn-action btn-outline" href="https://www.instagram.com/djkroch" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            MESSAGE ON INSTAGRAM
+          </a>
+        </div>
+      </div>
+
+      <!-- Booking Form -->
+      <div class="booking-form-box">
+        <h3>CHECK YOUR DATE</h3>
+        <form id="bf" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="f1">Your name *</label>
+              <input id="f1" name="name" required autocomplete="name" placeholder="E.g. Abebech &amp; Daniel">
+            </div>
+            <div class="form-group">
+              <label for="f2">Phone or Telegram *</label>
+              <input id="f2" name="contact" required autocomplete="tel" placeholder="+251 9... or @username">
+            </div>
+            <div class="form-group">
+              <label for="f3">Event date *</label>
+              <input id="f3" name="date" type="date" required>
+            </div>
+            <div class="form-group">
+              <label for="f4">City</label>
+              <select id="f4" name="city">
+                <option value="Bahir Dar">Bahir Dar</option>
+                <option value="Addis Ababa">Addis Ababa</option>
+                <option value="Other city">Other city</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f5">Event type</label>
+              <select id="f5" name="event_type">
+                <option value="Wedding">Wedding</option>
+                <option value="Concert">Concert</option>
+                <option value="Fashion show">Fashion show</option>
+                <option value="Corporate event">Corporate event</option>
+                <option value="House party">House party</option>
+                <option value="School event">School event</option>
+                <option value="Birthday party">Birthday party</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f6">Guests (approx.)</label>
+              <input id="f6" name="guests" type="number" min="1" inputmode="numeric" placeholder="E.g. 350">
+            </div>
+            <div class="form-group full">
+              <label for="f7">Anything else?</label>
+              <textarea id="f7" name="notes" rows="3" placeholder="Venue, music style, start time, special songs..."></textarea>
+            </div>
+          </div>
+
+          <div id="fmsg" class="form-status-msg" role="status" aria-live="polite"></div>
+          <button class="btn-submit" type="submit">SEND MY REQUEST</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 11: BIG FOOTER (10 PADS & GIANT ARTIST NAME)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-branding">
+          <h2>DJ KROCH</h2>
+          <p>Professional DJ and event entertainment in Bahir Dar and Addis Ababa, Ethiopia. Weddings, concerts, fashion shows, corporate events and private parties.</p>
+        </div>
+      </div>
+
+      <!-- 10 Navigation & Sound Pads -->
+      <div class="footer-pads-section">
+        <span class="footer-pads-title">FOOTER // 10 SOUND PADS</span>
+        <div class="footer-pads-grid">
+          <a href="#events" class="footer-pad" data-pad="1">
+            <span class="pad-num">PAD 01</span>
+            <span class="pad-label">EVENTS</span>
+          </a>
+          <a href="#gallery" class="footer-pad" data-pad="2">
+            <span class="pad-num">PAD 02</span>
+            <span class="pad-label">GALLERY</span>
+          </a>
+          <a href="#about" class="footer-pad" data-pad="3">
+            <span class="pad-num">PAD 03</span>
+            <span class="pad-label">ABOUT</span>
+          </a>
+          <a href="#music" class="footer-pad" data-pad="4">
+            <span class="pad-num">PAD 04</span>
+            <span class="pad-label">MIXES</span>
+          </a>
+          <a href="#shows" class="footer-pad" data-pad="5">
+            <span class="pad-num">PAD 05</span>
+            <span class="pad-label">CITIES</span>
+          </a>
+          <a href="#watch" class="footer-pad" data-pad="6">
+            <span class="pad-num">PAD 06</span>
+            <span class="pad-label">WATCH</span>
+          </a>
+          <a href="#book" class="footer-pad" data-pad="7">
+            <span class="pad-num">PAD 07</span>
+            <span class="pad-label">BOOKING</span>
+          </a>
+          <a href="https://www.instagram.com/djkroch" target="_blank" rel="noopener" class="footer-pad" data-pad="8">
+            <span class="pad-num">PAD 08</span>
+            <span class="pad-label">INSTAGRAM</span>
+          </a>
+          <a href="https://www.youtube.com/@DJKROCHENTERTAINMENT" target="_blank" rel="noopener" class="footer-pad" data-pad="9">
+            <span class="pad-num">PAD 09</span>
+            <span class="pad-label">YOUTUBE</span>
+          </a>
+          <a href="https://www.tiktok.com/@djkroch2" target="_blank" rel="noopener" class="footer-pad" data-pad="10">
+            <span class="pad-num">PAD 10</span>
+            <span class="pad-label">TIKTOK</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-legal-bar">
+        <span>© 2026 DJ Kroch Entertainment. All rights reserved.</span>
+        <span class="et">ባሕር ዳር እና አዲስ አበባ፣ ኢትዮጵያ</span>
+        <span>djkrochentertainment@gmail.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       INLINE JAVASCRIPT: WEB AUDIO SYNTH, PLAYERS, LIGHTBOX, ANIMATIONS, FORM
+       ======================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ------------------------------------------------------------------------
+         1. HERO WAVE CANVAS ANIMATION (DOT WAVE)
+         ------------------------------------------------------------------------ */
+      const canvas = document.getElementById('heroWaveCanvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let step = 0;
+
+        function resizeCanvas() {
+          canvas.width = canvas.offsetWidth || 280;
+          canvas.height = canvas.offsetHeight || 140;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        function drawWave() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const cols = 24;
+          const rows = 10;
+          const xGap = canvas.width / (cols + 1);
+          const yGap = canvas.height / (rows + 1);
+
+          ctx.fillStyle = '#0d0d0d';
+
+          for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+              const x = (i + 1) * xGap;
+              const baseY = (j + 1) * yGap;
+              const wave = Math.sin(step * 0.05 + i * 0.3 + j * 0.2) * 8;
+              const r = Math.max(1, Math.sin(step * 0.03 + i * 0.4) * 2 + 2);
+
+              ctx.beginPath();
+              ctx.arc(x, baseY + wave, r, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+          step++;
+          requestAnimationFrame(drawWave);
+        }
+        drawWave();
+      }
+
+      /* ------------------------------------------------------------------------
+         2. HERO DUAL MODE: PHOTO / LIVE BOOTH CAM VIDEO
+         ------------------------------------------------------------------------ */
+      const heroPortraitCard = document.getElementById('heroPortraitCard');
+      const heroBoothVideo = document.getElementById('heroBoothVideo');
+      const heroModeBtn = document.getElementById('heroModeBtn');
+      const heroModeLabel = document.getElementById('heroModeLabel');
+
+      if (heroModeBtn && heroPortraitCard && heroBoothVideo) {
+        let isVideoMode = false;
+        heroModeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          isVideoMode = !isVideoMode;
+          if (isVideoMode) {
+            heroPortraitCard.classList.add('video-active');
+            heroModeLabel.textContent = 'PHOTO MODE';
+            heroBoothVideo.play().catch(() => {});
+          } else {
+            heroPortraitCard.classList.remove('video-active');
+            heroModeLabel.textContent = 'BOOTH CAM [VIDEO]';
+            heroBoothVideo.pause();
+          }
+        });
+      }
+
+      /* ------------------------------------------------------------------------
+         3. HERO VU METER SIMULATION (4-CHANNELS)
+         ------------------------------------------------------------------------ */
+      const vuMeters = document.querySelectorAll('#vuMeterGroup .channel-meter');
+      if (vuMeters.length) {
+        setInterval(() => {
+          vuMeters.forEach((meter) => {
+            const bars = meter.querySelectorAll('.bar');
+            const activeCount = Math.floor(Math.random() * (bars.length + 1));
+            bars.forEach((b, idx) => {
+              if (idx < activeCount) {
+                b.classList.add('active');
+                if (idx >= bars.length - 2) b.classList.add('peak');
+                else b.classList.remove('peak');
+              } else {
+                b.classList.remove('active', 'peak');
+              }
+            });
+          });
+        }, 120);
+      }
+
+      /* ------------------------------------------------------------------------
+         4. WEB AUDIO API DEMO HOUSE BEAT SYNTHESIZER
+            (Ensures 3 players work even if audio/mix-1..3.mp3 are missing!)
+         ------------------------------------------------------------------------ */
+      let audioCtx = null;
+      function getAudioContext() {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      class HouseBeatSynth {
+        constructor() {
+          this.isPlaying = false;
+          this.tempo = 124;
+          this.beatInterval = 60 / this.tempo / 4;
+          this.currentStep = 0;
+          this.timer = null;
+          this.trackIndex = 1;
+        }
+
+        start(trackIndex = 1) {
+          const ctx = getAudioContext();
+          this.isPlaying = true;
+          this.trackIndex = trackIndex;
+          this.currentStep = 0;
+          this.scheduleLoop(ctx.currentTime);
+        }
+
+        stop() {
+          this.isPlaying = false;
+          if (this.timer) clearTimeout(this.timer);
+        }
+
+        scheduleLoop(startTime) {
+          if (!this.isPlaying) return;
+          const ctx = getAudioContext();
+          const step = this.currentStep % 16;
+
+          // 1. Four-on-the-floor Kick
+          if (step % 4 === 0) this.playKick(startTime);
+
+          // 2. Open Hi-hat on offbeat, closed on eighths
+          if (step % 4 === 2) this.playHat(startTime, true);
+          else if (step % 2 === 0) this.playHat(startTime, false);
+
+          // 3. Clap on 2 and 4
+          if (step === 4 || step === 12) this.playClap(startTime);
+
+          // 4. Bouncy Sub-bass
+          const baseFreq = this.trackIndex === 1 ? 55 : (this.trackIndex === 2 ? 65.4 : 49);
+          const bassStepNotes = [0, 0, 3, 0, 5, 5, 7, 3, 0, 0, 10, 0, 7, 5, 3, 2];
+          if (step % 2 === 0) {
+            const semitone = bassStepNotes[step];
+            const noteFreq = baseFreq * Math.pow(2, semitone / 12);
+            this.playBass(startTime, noteFreq);
+          }
+
+          // 5. Synth Stab Chord on syncopations
+          if (step === 3 || step === 6 || step === 11) {
+            this.playChords(startTime, baseFreq * 2);
+          }
+
+          this.currentStep++;
+          const nextTime = startTime + this.beatInterval;
+          const delayMs = Math.max(0, (nextTime - ctx.currentTime) * 1000);
+          this.timer = setTimeout(() => this.scheduleLoop(nextTime), delayMs);
+        }
+
+        playKick(t) {
+          const ctx = getAudioContext();
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.frequency.setValueAtTime(140, t);
+          osc.frequency.exponentialRampToValueAtTime(32, t + 0.12);
+          gain.gain.setValueAtTime(1.0, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(t);
+          osc.stop(t + 0.23);
+        }
+
+        playHat(t, isOpen = false) {
+          const ctx = getAudioContext();
+          const bufferSize = ctx.sampleRate * (isOpen ? 0.2 : 0.04);
+          const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+          const noise = ctx.createBufferSource();
+          noise.buffer = buffer;
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'highpass';
+          filter.frequency.setValueAtTime(8000, t);
+          const gain = ctx.createGain();
+          gain.gain.setValueAtTime(isOpen ? 0.35 : 0.2, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + (isOpen ? 0.18 : 0.04));
+          noise.connect(filter);
+          filter.connect(gain);
+          gain.connect(ctx.destination);
+          noise.start(t);
+          noise.stop(t + (isOpen ? 0.19 : 0.05));
+        }
+
+        playClap(t) {
+          const ctx = getAudioContext();
+          const bufferSize = ctx.sampleRate * 0.12;
+          const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+          const noise = ctx.createBufferSource();
+          noise.buffer = buffer;
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.setValueAtTime(1200, t);
+          filter.Q.setValueAtTime(3, t);
+          const gain = ctx.createGain();
+          gain.gain.setValueAtTime(0.4, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+          noise.connect(filter);
+          filter.connect(gain);
+          gain.connect(ctx.destination);
+          noise.start(t);
+          noise.stop(t + 0.13);
+        }
+
+        playBass(t, freq) {
+          const ctx = getAudioContext();
+          const osc = ctx.createOscillator();
+          const filter = ctx.createBiquadFilter();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, t);
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(450, t);
+          filter.frequency.exponentialRampToValueAtTime(100, t + 0.15);
+          gain.gain.setValueAtTime(0.35, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(t);
+          osc.stop(t + 0.19);
+        }
+
+        playChords(t, root) {
+          const ctx = getAudioContext();
+          const intervals = [0, 3, 7, 10];
+          intervals.forEach((semi) => {
+            const osc = ctx.createOscillator();
+            const filter = ctx.createBiquadFilter();
+            const gain = ctx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(root * Math.pow(2, semi / 12), t);
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(1200, t);
+            filter.frequency.exponentialRampToValueAtTime(200, t + 0.2);
+            gain.gain.setValueAtTime(0.07, t);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(t);
+            osc.stop(t + 0.23);
+          });
+        }
+      }
+
+      /* ------------------------------------------------------------------------
+         5. PLAYER ORCHESTRATION (ONE PLAYS AT A TIME)
+         ------------------------------------------------------------------------ */
+      const synthEngine = new HouseBeatSynth();
+      const trackRows = document.querySelectorAll('.mix-track-row');
+      let currentPlayingRow = null;
+      let audioElement = null;
+      let progressTimer = null;
+      let currentTime = 0;
+      let totalDuration = 225;
+      let isUsingSynth = false;
+
+      function formatTime(seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return `${m}:${s < 10 ? '0' : ''}${s}`;
+      }
+
+      function updateTrackProgress(row, cur, tot) {
+        const fill = row.querySelector('.progress-fill');
+        const elapsedEl = row.querySelector('.time-elapsed');
+        const leftEl = row.querySelector('.time-left');
+        const pct = Math.min(100, (cur / tot) * 100);
+        if (fill) fill.style.width = `${pct}%`;
+        if (elapsedEl) elapsedEl.textContent = formatTime(cur);
+        if (leftEl) leftEl.textContent = `-${formatTime(Math.max(0, tot - cur))}`;
+      }
+
+      function stopCurrentTrack() {
+        if (progressTimer) clearInterval(progressTimer);
+        synthEngine.stop();
+
+        if (audioElement) {
+          audioElement.pause();
+          audioElement.currentTime = 0;
+          audioElement = null;
+        }
+
+        if (currentPlayingRow) {
+          currentPlayingRow.classList.remove('is-active');
+          const btn = currentPlayingRow.querySelector('.btn-play-pause');
+          if (btn) {
+            btn.innerHTML = '<svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"></polygon></svg>';
+          }
+          currentPlayingRow = null;
+        }
+      }
+
+      function playTrack(row) {
+        if (currentPlayingRow === row) {
+          stopCurrentTrack();
+          return;
+        }
+
+        stopCurrentTrack();
+        currentPlayingRow = row;
+        row.classList.add('is-active');
+
+        const btn = row.querySelector('.btn-play-pause');
+        if (btn) {
+          btn.innerHTML = '<svg class="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+        }
+
+        const src = row.getAttribute('data-src');
+        const idx = parseInt(row.getAttribute('data-index') || '1', 10);
+        totalDuration = parseFloat(row.getAttribute('data-duration') || '225');
+        currentTime = 0;
+
+        isUsingSynth = false;
+        audioElement = new Audio();
+        audioElement.src = src;
+
+        const playPromise = audioElement.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              const badge = document.getElementById('audioEngineBadge');
+              if (badge) badge.innerHTML = '<span class="jog-status">PLAYING AUDIO FILE</span>';
+
+              audioElement.addEventListener('timeupdate', () => {
+                if (audioElement) {
+                  currentTime = audioElement.currentTime;
+                  totalDuration = audioElement.duration || totalDuration;
+                  updateTrackProgress(row, currentTime, totalDuration);
+                }
+              });
+              audioElement.addEventListener('ended', () => {
+                stopCurrentTrack();
+              });
+            })
+            .catch(() => {
+              fallbackToWebAudio(row, idx);
+            });
+        }
+
+        audioElement.onerror = () => {
+          fallbackToWebAudio(row, idx);
+        };
+      }
+
+      function fallbackToWebAudio(row, idx) {
+        if (audioElement) {
+          audioElement.pause();
+          audioElement = null;
+        }
+        isUsingSynth = true;
+        const badge = document.getElementById('audioEngineBadge');
+        if (badge) badge.innerHTML = '<span class="jog-status" style="color:var(--orange)">WEB AUDIO SYNTH · DEMO HOUSE BEAT</span>';
+
+        synthEngine.start(idx);
+
+        progressTimer = setInterval(() => {
+          currentTime += 0.25;
+          if (currentTime >= totalDuration) {
+            stopCurrentTrack();
+          } else {
+            updateTrackProgress(row, currentTime, totalDuration);
+          }
+        }, 250);
+      }
+
+      trackRows.forEach((row) => {
+        const btn = row.querySelector('.btn-play-pause');
+        const progressWrap = row.querySelector('.progress-bar-wrap');
+
+        if (btn) {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playTrack(row);
+          });
+        }
+
+        row.addEventListener('click', (e) => {
+          if (e.target.closest('.progress-bar-wrap')) return;
+          playTrack(row);
+        });
+
+        if (progressWrap) {
+          progressWrap.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const rect = progressWrap.getBoundingClientRect();
+            const clickPos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+            currentTime = clickPos * totalDuration;
+
+            if (audioElement && !isUsingSynth) {
+              audioElement.currentTime = currentTime;
+            }
+            updateTrackProgress(row, currentTime, totalDuration);
+          });
+        }
+      });
+
+      /* ------------------------------------------------------------------------
+         6. ADVANCED VIDEO REELS CONTROLS (MUTE, HOVER PREVIEW, FULLSCREEN)
+         ------------------------------------------------------------------------ */
+      const videoCards = document.querySelectorAll('.video-reel-card');
+      videoCards.forEach((card) => {
+        const video = card.querySelector('video');
+        const togglePlayBtn = card.querySelector('.toggle-play');
+        const toggleMuteBtn = card.querySelector('.toggle-mute');
+        const expandBtn = card.querySelector('.expand-modal');
+
+        if (!video) return;
+
+        // Auto play muted preview on hover
+        card.addEventListener('mouseenter', () => {
+          if (video.paused) {
+            video.play().catch(() => {});
+          }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          if (!video.paused && video.muted) {
+            video.pause();
+          }
+        });
+
+        if (togglePlayBtn) {
+          togglePlayBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.paused) {
+              video.play();
+              togglePlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+            } else {
+              video.pause();
+              togglePlayBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"></polygon></svg>';
+            }
+          });
+        }
+
+        if (toggleMuteBtn) {
+          toggleMuteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            video.muted = !video.muted;
+            if (video.muted) {
+              toggleMuteBtn.innerHTML = '<svg class="icon-vol-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+            } else {
+              toggleMuteBtn.innerHTML = '<svg class="icon-vol-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+            }
+          });
+        }
+
+        if (expandBtn) {
+          expandBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openLightboxVideo(video.src, card.querySelector('.reel-title').textContent);
+          });
+        }
+      });
+
+      /* ------------------------------------------------------------------------
+         7. GALLERY CATEGORY FILTERING & ADVANCED LIGHTBOX
+         ------------------------------------------------------------------------ */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('#mainGalleryGrid .gal-item');
+      let currentGalleryList = Array.from(galleryItems);
+      let activeIndex = 0;
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          const filter = btn.getAttribute('data-filter');
+          currentGalleryList = [];
+
+          galleryItems.forEach((item) => {
+            const cat = item.getAttribute('data-cat') || '';
+            if (filter === 'all' || cat.includes(filter)) {
+              item.style.display = '';
+              currentGalleryList.push(item);
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      const lbDialog = document.getElementById('lightboxModal');
+      const lbMediaContainer = document.getElementById('lbMediaContainer');
+      const lbCaption = document.getElementById('lightboxCaption');
+      const lbClose = document.getElementById('lightboxClose');
+      const lbPrev = document.getElementById('lbPrev');
+      const lbNext = document.getElementById('lbNext');
+
+      function showLightboxItem(idx) {
+        if (!currentGalleryList.length) return;
+        if (idx < 0) idx = currentGalleryList.length - 1;
+        if (idx >= currentGalleryList.length) idx = 0;
+        activeIndex = idx;
+
+        const target = currentGalleryList[activeIndex];
+        const img = target.querySelector('img');
+        if (img) {
+          lbMediaContainer.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+          lbCaption.textContent = `${img.alt} (${activeIndex + 1}/${currentGalleryList.length})`;
+          if (typeof lbDialog.showModal === 'function' && !lbDialog.open) {
+            lbDialog.showModal();
+          }
+        }
+      }
+
+      function openLightboxVideo(videoSrc, title) {
+        lbMediaContainer.innerHTML = `<video src="${videoSrc}" controls autoplay playsinline style="max-width:86vw;max-height:72vh;border-radius:var(--radius-sm)"></video>`;
+        lbCaption.textContent = `${title} [LIVE VIDEO REEL]`;
+        if (typeof lbDialog.showModal === 'function') lbDialog.showModal();
+        else lbDialog.setAttribute('open', '');
+      }
+
+      galleryItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          const idx = currentGalleryList.indexOf(item);
+          if (idx !== -1) showLightboxItem(idx);
+        });
+      });
+
+      if (lbPrev) lbPrev.addEventListener('click', () => showLightboxItem(activeIndex - 1));
+      if (lbNext) lbNext.addEventListener('click', () => showLightboxItem(activeIndex + 1));
+
+      if (lbClose && lbDialog) {
+        function closeLb() {
+          const vid = lbMediaContainer.querySelector('video');
+          if (vid) vid.pause();
+          if (typeof lbDialog.close === 'function') lbDialog.close();
+          else lbDialog.removeAttribute('open');
+        }
+        lbClose.addEventListener('click', closeLb);
+        lbDialog.addEventListener('click', (e) => {
+          if (e.target === lbDialog) closeLb();
+        });
+        window.addEventListener('keydown', (e) => {
+          if (!lbDialog.open) return;
+          if (e.key === 'ArrowLeft') showLightboxItem(activeIndex - 1);
+          if (e.key === 'ArrowRight') showLightboxItem(activeIndex + 1);
+          if (e.key === 'Escape') closeLb();
+        });
+      }
+
+      /* ------------------------------------------------------------------------
+         8. FOOTER SOUND PADS (INTERACTIVE AUDIO BLIPS VIA WEB AUDIO)
+         ------------------------------------------------------------------------ */
+      const footerPads = document.querySelectorAll('.footer-pad');
+      footerPads.forEach((pad, idx) => {
+        pad.addEventListener('click', () => {
+          try {
+            const ctx = getAudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            const freq = 220 * Math.pow(1.059, idx * 2);
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(freq * 1.5, ctx.currentTime + 0.08);
+            gain.gain.setValueAtTime(0.15, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.11);
+          } catch(e) {}
+        });
+      });
+
+      /* ------------------------------------------------------------------------
+         9. BOOKING FORM SUBMISSION (WITH DETAILED MAILTO FORMATTING)
+         ------------------------------------------------------------------------ */
+      const form = document.getElementById('bf');
+      const fmsg = document.getElementById('fmsg');
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const v = (id) => (document.getElementById(id) ? document.getElementById(id).value.trim() : '');
+          const name = v('f1');
+          const contact = v('f2');
+          const date = v('f3');
+          const city = v('f4');
+          const eventType = v('f5');
+          const guests = v('f6');
+          const notes = v('f7');
+
+          if (!name || !contact || !date) {
+            fmsg.className = 'form-status-msg error';
+            fmsg.textContent = 'Please fill in your name, contact and event date.';
+            return;
+          }
+
+          const bodyText =
+            `Hello DJ Kroch!\n\nI would like to check availability for my event.\n\n` +
+            `• Name: ${name}\n` +
+            `• Contact: ${contact}\n` +
+            `• Event Date: ${date}\n` +
+            `• City: ${city}\n` +
+            `• Event Type: ${eventType}\n` +
+            (guests ? `• Approximate Guests: ${guests}\n` : '') +
+            (notes ? `• Additional Notes: ${notes}\n` : '') +
+            `\nLooking forward to hearing from you!`;
+
+          const subject = `Booking request: ${eventType} on ${date} (${city})`;
+          const mailtoUri = `mailto:djkrochentertainment@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+
+          fmsg.className = 'form-status-msg success';
+          fmsg.innerHTML = `Opening your email app... If nothing opens, email us directly at <a href="${mailtoUri}" style="color:var(--orange);text-decoration:underline;">djkrochentertainment@gmail.com</a>.`;
+
+          window.location.href = mailtoUri;
+        });
+      }
+
+    })();
+  </script>
+</body>
+</html>
