@@ -17,20 +17,23 @@
        DESIGN SYSTEM & TOKENS (djlr.framer.website reference look & feel)
        ========================================================================== */
     :root {
-      --bg: #0d0d0d;
-      --bg-card: #161514;
-      --bg-card-light: #eeede8;
-      --bg-card-tan: #c8a97e;
-      --bg-card-lavender: #bbaae9; /* The reference lavender card */
-      --bg-card-beige: #e3e0d6;
-      --text: #eeede8;
-      --text-muted: rgba(238, 237, 232, 0.65);
-      --text-dim: rgba(238, 237, 232, 0.4);
-      --text-dark: #0d0d0d;
-      --orange: #ff4f1f;
-      --orange-hover: #e03f12;
-      --border: rgba(238, 237, 232, 0.12);
-      --border-light: rgba(13, 13, 13, 0.12);
+      --bg: #0b0b0e;
+      --bg-card: #141418;
+      --bg-card-light: #f5f3ec;
+      --bg-card-tan: #caa55d;
+      --bg-card-lavender: #dcb350; /* Signature Logo Champagne Gold card */
+      --bg-card-beige: #e5dfd0;
+      --text: #f5f3ec;
+      --text-muted: rgba(245, 243, 236, 0.65);
+      --text-dim: rgba(245, 243, 236, 0.4);
+      --text-dark: #0b0b0e;
+      --orange: #FFB800; /* Signature DJ Kroch Logo Electric Gold */
+      --orange-hover: #E5A500;
+      --ember: #FF3B00; /* Logo Turntable Ember Glow */
+      --ember-glow: rgba(255, 59, 0, 0.45);
+      --gold-glow: rgba(255, 184, 0, 0.35);
+      --border: rgba(245, 243, 236, 0.12);
+      --border-light: rgba(11, 11, 14, 0.12);
       --radius-sm: 4px;
       --radius-md: 8px;
       --radius-lg: 12px;
@@ -148,12 +151,14 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 1px dashed rgba(238, 237, 232, 0.4);
+      border: 1px dashed var(--orange);
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       animation: spin 8s linear infinite;
+      background: #111115;
+      box-shadow: 0 0 8px rgba(255, 184, 0, 0.2);
     }
 
     .jog-inner {
@@ -161,6 +166,7 @@
       height: 12px;
       border-radius: 50%;
       background: var(--orange);
+      box-shadow: 0 0 6px var(--orange);
     }
 
     .jog-meta {
@@ -182,16 +188,18 @@
       color: var(--orange);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      letter-spacing: 0.08em;
     }
 
     .jog-status::before {
       content: '';
       display: inline-block;
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: var(--orange);
+      background: var(--ember);
+      box-shadow: 0 0 8px var(--ember-glow);
       animation: pulse 1.4s ease-in-out infinite;
     }
 
@@ -1156,10 +1164,11 @@
 
     .progress-fill {
       height: 100%;
-      background: var(--orange);
+      background: linear-gradient(90deg, #FFB800 0%, #FF6A00 100%);
       width: 0%;
       border-radius: 3px;
       transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(255, 184, 0, 0.4);
     }
 
     .time-indicators {
@@ -2303,7 +2312,7 @@
     <!-- Navigation Picture Tiles (Desktop) -->
     <nav class="nav-tiles" aria-label="Main Navigation">
       <a href="#events" class="nav-tile">
-        <img src="images/gal-1.jpg" alt="" class="nav-tile-thumb" width="46" height="46">
+        <img src="images/about-2.jpg" alt="Events DJ Kroch plays" class="nav-tile-thumb" width="46" height="46">
         <div class="nav-tile-info">
           <span class="nav-tile-index">01 // EVENTS</span>
           <span class="nav-tile-label">EVENTS WE PLAY</span>
@@ -2311,7 +2320,7 @@
         </div>
       </a>
       <a href="#gallery" class="nav-tile">
-        <img src="images/gal-2.jpg" alt="" class="nav-tile-thumb" width="46" height="46">
+        <img src="images/about-3.jpg" alt="Wedding celebration moments" class="nav-tile-thumb" width="46" height="46">
         <div class="nav-tile-info">
           <span class="nav-tile-index">02 // GALLERY</span>
           <span class="nav-tile-label">WEDDING MOMENTS</span>
@@ -2319,7 +2328,7 @@
         </div>
       </a>
       <a href="#about" class="nav-tile">
-        <img src="images/about-1.jpg" alt="" class="nav-tile-thumb" width="46" height="46">
+        <img src="images/photo-12.jpg" alt="Bahir Dar and Addis Ababa locations" class="nav-tile-thumb" width="46" height="46">
         <div class="nav-tile-info">
           <span class="nav-tile-index">03 // ABOUT</span>
           <span class="nav-tile-label">BAHIR DAR &amp; ADDIS</span>
@@ -2327,7 +2336,7 @@
         </div>
       </a>
       <a href="#book" class="nav-tile cta-tile">
-        <img src="images/logo.png" alt="" class="nav-tile-thumb" width="46" height="46">
+        <img src="images/logo.png" alt="DJ Kroch logo" class="nav-tile-thumb" width="46" height="46">
         <div class="nav-tile-info">
           <span class="nav-tile-index">04 // RESERVE</span>
           <span class="nav-tile-label">BOOK THE DJ</span>
@@ -2434,7 +2443,7 @@
 
       <!-- 5. Bottom-Right Dark Venue Card -->
       <a href="#book" class="hero-card-venue">
-        <img src="images/book.jpg" alt="Crowd dancing as DJ Kroch hosts a night wedding" class="venue-bg">
+        <img src="images/photo-14.jpg" alt="Grand reception venue setup for DJ Kroch events in Bahir Dar and Addis Ababa" class="venue-bg">
         <div class="venue-overlay"></div>
         <div class="card-meta">
           <span>NEXT CELEBRATION</span>
@@ -2465,7 +2474,7 @@
       <!-- 5 Interactive Vertical Slices with Workspace Photos -->
       <div class="about-slices" role="region" aria-label="Photo slices">
         <div class="about-slice" tabindex="0">
-          <img src="images/photo-1.jpg" alt="DJ Kroch at the Pioneer console" class="slice-bg">
+          <img src="images/photo-1.jpg" alt="DJ Kroch live at wedding celebration entrance" class="slice-bg">
           <div class="slice-shade"></div>
           <div class="slice-content">
             <div class="slice-num">01 // TRADITION</div>
@@ -2473,7 +2482,7 @@
           </div>
         </div>
         <div class="about-slice" tabindex="0">
-          <img src="images/gal-2.jpg" alt="DJ Kroch with headphones and mic under the flower arches" class="slice-bg">
+          <img src="images/photo-2.jpg" alt="Traditional Ethiopian wedding ceremony and blessing vibes" class="slice-bg">
           <div class="slice-shade"></div>
           <div class="slice-content">
             <div class="slice-num">02 // MASTERY</div>
@@ -2481,7 +2490,7 @@
           </div>
         </div>
         <div class="about-slice default-wide" tabindex="0">
-          <img src="images/gal-1.jpg" alt="Crowd dancing as DJ Kroch hosts a night wedding" class="slice-bg">
+          <img src="images/photo-3.jpg" alt="Grand reception hall dancing and celebration crowd" class="slice-bg">
           <div class="slice-shade"></div>
           <div class="slice-content">
             <div class="slice-num">03 // STAGE ENERGY</div>
@@ -2489,7 +2498,7 @@
           </div>
         </div>
         <div class="about-slice" tabindex="0">
-          <img src="images/photo-5.jpg" alt="DJ Kroch hyping the crowd on the wireless microphone" class="slice-bg">
+          <img src="images/photo-4.jpg" alt="Emotional and high-energy celebration moments" class="slice-bg">
           <div class="slice-shade"></div>
           <div class="slice-content">
             <div class="slice-num">04 // MOMENTS</div>
@@ -2497,7 +2506,7 @@
           </div>
         </div>
         <div class="about-slice" tabindex="0">
-          <img src="images/photo-8.jpg" alt="Addis Ababa grand hotel ballroom celebration" class="slice-bg">
+          <img src="images/photo-6.jpg" alt="DJ Kroch on Bahir Dar and Addis Ababa stages" class="slice-bg">
           <div class="slice-shade"></div>
           <div class="slice-content">
             <div class="slice-num">05 // CITIES</div>
@@ -2740,7 +2749,7 @@
 
       <!-- 5. Photo Card 1 -->
       <div class="rel-card rel-card-photo">
-        <img src="images/gal-4.jpg" alt="The bridal party dancing in front of the golden thrones">
+        <img src="images/photo-9.jpg" alt="Concert stage lighting and live festival performance by DJ Kroch">
       </div>
 
       <!-- 6. Dark Card: Fashion & Private -->
@@ -2761,7 +2770,7 @@
 
       <!-- 7. Photo Card 2 -->
       <div class="rel-card rel-card-photo">
-        <img src="images/gal-5.jpg" alt="A wedding group photo on the dance floor">
+        <img src="images/photo-10.jpg" alt="Celebration guests and high-energy crowd cheering on dance floor">
       </div>
 
       <!-- 8. Beige Action Card -->
@@ -2852,31 +2861,7 @@
           </div>
         </button>
 
-        <!-- 7. DJ Kroch console closeup -->
-        <button class="gal-item" data-cat="performance" type="button" aria-label="Open photo: DJ Kroch live at the Pioneer console, Bahir Dar">
-          <img src="images/photo-1.jpg" alt="DJ Kroch live at the Pioneer console, Bahir Dar" loading="lazy">
-          <div class="gal-overlay">
-            <span class="gal-caption">DJ Kroch live at the Pioneer console, Bahir Dar</span>
-          </div>
-        </button>
-
-        <!-- 8. Grand entrance celebration -->
-        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: Grand entrance celebration with bridal entourage">
-          <img src="images/photo-2.jpg" alt="Grand entrance celebration with bridal entourage" loading="lazy">
-          <div class="gal-overlay">
-            <span class="gal-caption">Grand entrance celebration with bridal entourage</span>
-          </div>
-        </button>
-
-        <!-- 9. Stage lighting setup -->
-        <button class="gal-item" data-cat="performance wedding" type="button" aria-label="Open photo: Stage lighting and luxury floral arch setup">
-          <img src="images/photo-4.jpg" alt="Stage lighting and luxury floral arch setup" loading="lazy">
-          <div class="gal-overlay">
-            <span class="gal-caption">Stage lighting and luxury floral arch setup</span>
-          </div>
-        </button>
-
-        <!-- 10. DJ Kroch hyping the crowd on mic -->
+        <!-- 7. DJ Kroch hyping the crowd on mic (Featured) -->
         <button class="gal-item featured" data-cat="performance crowd" type="button" aria-label="Open photo: DJ Kroch hyping the crowd on the wireless microphone">
           <img src="images/photo-5.jpg" alt="DJ Kroch hyping the crowd on the wireless microphone" loading="lazy">
           <div class="gal-overlay">
@@ -2884,19 +2869,43 @@
           </div>
         </button>
 
-        <!-- 11. Evening lakeside reception -->
-        <button class="gal-item" data-cat="wedding" type="button" aria-label="Open photo: Elegant outdoor lakeside reception at dusk">
-          <img src="images/photo-7.jpg" alt="Elegant outdoor lakeside reception at dusk" loading="lazy">
+        <!-- 8. Elegant outdoor garden celebration -->
+        <button class="gal-item" data-cat="wedding" type="button" aria-label="Open photo: Elegant outdoor garden wedding celebration in Bahir Dar">
+          <img src="images/photo-7.jpg" alt="Elegant outdoor garden wedding celebration in Bahir Dar" loading="lazy">
           <div class="gal-overlay">
-            <span class="gal-caption">Elegant outdoor lakeside reception at dusk</span>
+            <span class="gal-caption">Elegant outdoor garden wedding celebration in Bahir Dar</span>
           </div>
         </button>
 
-        <!-- 12. Addis Ababa ballroom party -->
-        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: Addis Ababa grand hotel ballroom celebration">
-          <img src="images/photo-8.jpg" alt="Addis Ababa grand hotel ballroom celebration" loading="lazy">
+        <!-- 9. DJ Kroch booth closeup -->
+        <button class="gal-item" data-cat="performance" type="button" aria-label="Open photo: DJ Kroch booth closeup with headphones and live deck controls">
+          <img src="images/photo-8.jpg" alt="DJ Kroch booth closeup with headphones and live deck controls" loading="lazy">
           <div class="gal-overlay">
-            <span class="gal-caption">Addis Ababa grand hotel ballroom celebration</span>
+            <span class="gal-caption">DJ Kroch booth closeup with headphones and live deck controls</span>
+          </div>
+        </button>
+
+        <!-- 10. Romantic bride and groom portrait -->
+        <button class="gal-item" data-cat="wedding" type="button" aria-label="Open photo: Romantic bride and groom portrait in front of luxury floral arch">
+          <img src="images/photo-11.jpg" alt="Romantic bride and groom portrait in front of luxury floral arch" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Romantic bride and groom portrait in front of luxury floral arch</span>
+          </div>
+        </button>
+
+        <!-- 11. Grand entrance celebration -->
+        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: Grand entrance celebration with bridal entourage and cheering guests">
+          <img src="images/photo-13.jpg" alt="Grand entrance celebration with bridal entourage and cheering guests" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Grand entrance celebration with bridal entourage and cheering guests</span>
+          </div>
+        </button>
+
+        <!-- 12. Peak midnight wedding dance floor energy -->
+        <button class="gal-item" data-cat="wedding crowd" type="button" aria-label="Open photo: Peak midnight wedding dance floor energy and celebration">
+          <img src="images/photo-17.jpg" alt="Peak midnight wedding dance floor energy and celebration" loading="lazy">
+          <div class="gal-overlay">
+            <span class="gal-caption">Peak midnight wedding dance floor energy and celebration</span>
           </div>
         </button>
       </div>
@@ -3066,6 +3075,78 @@
             <span class="reel-platform">RECEPTION // GRAND ENTRANCE</span>
             <div class="reel-title">CEREMONY TO PARTY</div>
             <p class="reel-desc">Flawless timing for the bridal entrance, champagne toasts, and the transition into full celebration.</p>
+          </div>
+        </div>
+
+        <!-- Reel 4: Festival Stage Crowd Energy -->
+        <div class="video-reel-card">
+          <div class="video-wrap" data-video-src="videos/video-6.mp4">
+            <span class="video-badge">FESTIVAL // STAGE</span>
+            <video src="videos/video-6.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="video-overlay-ctrls">
+              <button class="video-ctrl-btn toggle-play" type="button" aria-label="Play/Pause Video">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"></polygon></svg>
+              </button>
+              <button class="video-ctrl-btn toggle-mute" type="button" aria-label="Mute/Unmute Video">
+                <svg class="icon-vol-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </button>
+              <button class="video-ctrl-btn expand-modal" type="button" aria-label="Full screen view">
+                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="reel-info">
+            <span class="reel-platform">FESTIVAL // MASSIVE CROWD</span>
+            <div class="reel-title">STAGE HYPEMASTER</div>
+            <p class="reel-desc">Big stage sound systems with hands in the air, high-octane drops, and massive crowd chanting.</p>
+          </div>
+        </div>
+
+        <!-- Reel 5: Cultural Fusion & Eskista Beats -->
+        <div class="video-reel-card">
+          <div class="video-wrap" data-video-src="videos/video-7.mp4">
+            <span class="video-badge">CULTURE // ESKISTA</span>
+            <video src="videos/video-7.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="video-overlay-ctrls">
+              <button class="video-ctrl-btn toggle-play" type="button" aria-label="Play/Pause Video">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"></polygon></svg>
+              </button>
+              <button class="video-ctrl-btn toggle-mute" type="button" aria-label="Mute/Unmute Video">
+                <svg class="icon-vol-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </button>
+              <button class="video-ctrl-btn expand-modal" type="button" aria-label="Full screen view">
+                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="reel-info">
+            <span class="reel-platform">TRADITION // MODERN FUSION</span>
+            <div class="reel-title">ETHIOPIAN VIBES</div>
+            <p class="reel-desc">Authentic traditional rhythms blended with deep modern basslines for unmatched cultural celebration.</p>
+          </div>
+        </div>
+
+        <!-- Reel 6: Late Night Production & Sound Show -->
+        <div class="video-reel-card">
+          <div class="video-wrap" data-video-src="videos/video-8.mp4">
+            <span class="video-badge">NIGHT // LIGHT &amp; SOUND</span>
+            <video src="videos/video-8.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="video-overlay-ctrls">
+              <button class="video-ctrl-btn toggle-play" type="button" aria-label="Play/Pause Video">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"></polygon></svg>
+              </button>
+              <button class="video-ctrl-btn toggle-mute" type="button" aria-label="Mute/Unmute Video">
+                <svg class="icon-vol-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </button>
+              <button class="video-ctrl-btn expand-modal" type="button" aria-label="Full screen view">
+                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="reel-info">
+            <span class="reel-platform">FULL PRODUCTION // LIGHT SHOW</span>
+            <div class="reel-title">AFTERPARTY PEAK</div>
+            <p class="reel-desc">Laser lights, atmospheric smoke, and continuous club energy carrying the party into the early morning.</p>
           </div>
         </div>
       </div>
